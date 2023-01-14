@@ -25,7 +25,6 @@ export default function RankModal({ open, setOpen }: RankModalProps) {
 
     useMemo(() => {
         setScoreKeys(Object.keys(scoreData))
-        console.log("updating score keys because score data changed")
     }, [scoreData])
 
     useEffect(() => {
@@ -34,10 +33,8 @@ export default function RankModal({ open, setOpen }: RankModalProps) {
 
     useEffect(() => {
         if (randomItemName !== null) {
-            console.log(scoreData, randomItemName)
             if (scoreData[randomItemName] !== undefined) {
                 setScoreLeftItems([...scoreData[randomItemName].filter((value) => value.checked === false )].map(value => value.name))
-                console.log("setting score left items, because score data or random item name changed")
             }
         }
     }, [scoreData, randomItemName])
@@ -45,7 +42,6 @@ export default function RankModal({ open, setOpen }: RankModalProps) {
     useEffect(() => {
         if (scoreLeftItems !== null) {
             setRandomCheckedItemName(scoreLeftItems[getRandomInt(0, scoreLeftItems.length - 1)])
-            console.log("setting random checked item name, because score left items changed")
         }
     }, [scoreLeftItems])
 
